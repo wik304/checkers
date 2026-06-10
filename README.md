@@ -1,50 +1,54 @@
-# Warcaby (Checkers) - JavaFX
+# Checkers (Warcaby) - JavaFX
 
-Gra w warcaby (klasyczny wariant) napisana w języku Java z wykorzystaniem biblioteki graficznej JavaFX. Aplikacja oferuje rozgrywkę lokalną dla dwóch graczy z wbudowanym systemem zegarów szachowych.
+A classic checkers game written in Java using the JavaFX graphics library. The application features local two-player gameplay with a built-in chess clock system.
 
-### 🌟 Główne funkcje
+## 🌟 Key Features
 
-* **Lokalna gra wieloosobowa (1vs1):** Rozgrywka na jednym komputerze (Hot-Seat).
-* **Pełna mechanika warcabów:** Implementacja wymuszonego bicia, ruchu do tyłu podczas bicia wielokrotnego oraz promocji zwykłych pionków na damki (Kings).
-* **Zegary szachowe:** Każdy z graczy ma domyślnie 10 minut na całą partię. Czas odlicza się w czasie rzeczywistym.
-* **Rejestr ruchów:** Boczny panel wyświetlający historię i czas trwania poszczególnych ruchów dla koloru białego i czerwonego.
-* **Przygotowanie pod tryb sieciowy:** Interfejs zawiera menu z zaplanowanym trybem LAN (obecnie w fazie rozwoju).
-
----
-
-### 🛠 Technologie
-
-Projekt został zbudowany z użyciem nowoczesnego stosu technologicznego dla aplikacji okienkowych Java:
-
-* **Język:** Java 23
-* **GUI:** JavaFX 17.0.6 (Controls & FXML)
-* **Narzędzie budowania:** Maven (z wbudowanym Maven Wrapper)
-* **Testy:** JUnit 5.10.2 (skonfigurowane w `pom.xml`)
+- **Local multiplayer (1vs1):** Hot-seat gameplay on a single computer.
+- **Full checkers mechanics:** Implementation of forced captures, backward movement during multiple captures, and promotion of regular pieces to Kings.
+- **Chess clocks:** Each player has a default time limit of 10 minutes per game. The time is counted down in real-time.
+- **Move log:** A side panel displaying the history and duration of individual moves for both white and red players.
+- **LAN mode preparation:** The interface includes a menu with a planned LAN mode (currently under development).
 
 ---
 
-### ⚙️ Wymagania systemowe
+## 🛠 Technologies
 
-Aby skompilować i uruchomić projekt na swoim komputerze, potrzebujesz:
+The project was built using a modern technology stack for Java desktop applications:
 
-* Zainstalowanego **Java Development Kit (JDK)** w wersji **23** lub nowszej.
-* Zmiennej środowiskowej `JAVA_HOME` wskazującej na folder z instalacją JDK.
-* *Nie musisz instalować Mavena – projekt korzysta z dołączonego skryptu Maven Wrapper (`mvnw`).*
+- **Language:** Java 23
+- **GUI:** JavaFX 17.0.6 (Controls & FXML)
+- **Build Tool:** Maven (with built-in Maven Wrapper)
+- **Testing:** JUnit 5.10.2 (configured in `pom.xml`)
 
 ---
 
-### 🚀 Instrukcja instalacji i uruchomienia
+## ⚙️ System Requirements
 
-Skorzystaj z wbudowanego pluginu `javafx-maven-plugin`, aby automatycznie pobrać zależności, skompilować kod i uruchomić grę.
+To compile and run the project on your computer, you will need:
 
-**Dla systemu Windows:**
-Otwórz terminal (Wiersz polecenia lub PowerShell) w głównym katalogu projektu i wpisz:
+- **Java Development Kit (JDK)** version **23** or newer installed.
+- The `JAVA_HOME` environment variable pointing to your JDK installation folder.
+- You do **not** need to install Maven – the project uses the included Maven Wrapper (`mvnw`) script.
+
+---
+
+## 🚀 Installation and Usage
+
+Use the built-in `javafx-maven-plugin` to automatically download dependencies, compile the code, and run the game.
+
+### For Windows
+
+Open the terminal (Command Prompt or PowerShell) in the project's root directory and run:
+
 ```cmd
 mvnw.cmd clean javafx:run
 ```
 
-**Dla systemów Linux / macOS:**
-Otwórz terminal w głównym katalogu projektu, nadaj uprawnienia do wykonywania skryptu (tylko za pierwszym razem) i uruchom grę:
+### For Linux / macOS
+
+Open the terminal in the project's root directory, grant execute permissions to the script (only required the first time), and run the game:
+
 ```bash
 chmod +x mvnw
 ./mvnw clean javafx:run
@@ -52,20 +56,42 @@ chmod +x mvnw
 
 ---
 
-### 📂 Struktura projektu
+## 📂 Project Structure
 
-Główna logika aplikacji jest podzielona na czytelne klasy i pakiety:
+The main application logic is divided into clean, readable classes and packages:
 
-| Plik / Klasa | Opis |
-| :--- | :--- |
-| `CheckersApp.java` | Główna klasa startowa aplikacji JavaFX. |
-| `CheckersGame.java` | Zarządza interfejsem graficznym (GUI), menu, planszą i zegarami. |
-| `GameLogic.java` | Silnik gry. Odpowiada za weryfikację ruchów, bicia, promocję i warunki wygranej. |
-| `Piece.java` & `Tile.java` | Reprezentacja wizualna i stanowa pionków oraz pól na planszy. |
-| `MoveResult.java` & `MoveType.java` | Klasy pomocnicze do obsługi rezultatów i typów ruchów (zwykły, bicie, brak ruchu). |
-| `pom.xml` | Plik konfiguracyjny Maven zawierający zależności JavaFX. |
+| File / Class | Description |
+|-------------|-------------|
+| `CheckersApp.java` | The main starter class for the JavaFX application. |
+| `CheckersGame.java` | Manages the graphical user interface (GUI), menu, board, and clocks. |
+| `GameLogic.java` | The game engine. Responsible for move validation, captures, promotion, and win conditions. |
+| `Piece.java` | Visual and state representation of the game pieces. |
+| `Tile.java` | Visual and state representation of board tiles. |
+| `MoveResult.java` | Helper class for handling move results. |
+| `MoveType.java` | Enum describing move types (`NORMAL`, `CAPTURE`, `NONE`). |
+| `pom.xml` | Maven configuration file containing JavaFX dependencies. |
 
 ---
 
-### 🤝 Autorzy i rozwój
-Projekt jest gotowy do rozbudowy. Najbliższym zaplanowanym krokiem w rozwoju aplikacji jest wdrożenie pełnoprawnego trybu **LAN** do gry przez sieć lokalną, opierając się na architekturze klient-serwer.
+## 🎮 Gameplay Rules Implemented
+
+- Mandatory captures.
+- Multiple captures in a single turn.
+- Backward movement during multi-capture sequences.
+- Promotion to King upon reaching the opponent's back row.
+- Win detection when a player has no valid moves or no remaining pieces.
+- Real-time chess clocks with a 10-minute limit per player.
+
+---
+
+## 🚧 Future Development
+
+Planned features include:
+
+- LAN multiplayer mode.
+- Improved game settings.
+- Enhanced UI and animations.
+- Game saving and loading.
+- Additional game statistics.
+
+---
